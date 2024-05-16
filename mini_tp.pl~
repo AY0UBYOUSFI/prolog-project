@@ -1,0 +1,48 @@
+% Define a house structure with its attributes
+house(color, profession, nationality, drink, animal).
+
+% Facts about valid colors, professions, nationalities, drinks, and animals
+valid_color(red).
+valid_color(blue).
+valid_color(yellow)exists(A,(A,_,_,_,_)).
+exists(A,(_,A,_,_,_)).
+exists(A,(_,_,A,_,_)).
+exists(A,(_,_,_,A,_)).
+exists(A,(_,_,_,_,A)).
+
+rightOf(A,B,(B,A,_,_,_)).
+rightOf(A,B,(_,B,A,_,_)).
+rightOf(A,B,(_,_,B,A,_)).
+rightOf(A,B,(_,_,_,B,A)).
+
+middleHouse(A,(_,_,A,_,_)).
+
+firstHouse(A,(A,_,_,_,_)).
+
+nextTo(A,B,(B,A,_,_,_)).
+nextTo(A,B,(_,B,A,_,_)).
+nextTo(A,B,(_,_,B,A,_)).
+nextTo(A,B,(_,_,_,B,A)).
+nextTo(A,B,(A,B,_,_,_)).
+nextTo(A,B,(_,A,B,_,_)).
+nextTo(A,B,(_,_,A,B,_)).
+nextTo(A,B,(_,_,_,A,B)).
+
+:- Houses = (house(N1,P1,S1,D1,C1),house(N2,P2,S2,D2,C2),house(N3,P3,S3,D3,C3),house(N4,P4,S4,D4,C4),house(N5,P5,S5,D5,C5)),
+exists(house(english,_,_,_,red),Houses),
+exists(house(spainish,dog,_,_,_),Houses),
+exists(house(_,_,_,coffee,green),Houses),
+exists(house(ukrainian,_,_,tea,_),Houses),
+rightOf(house(_,_,_,_,green),house(_,_,_,_,ivory),Houses),
+exists(house(_,dog,oldgold,_,_),Houses),
+exists(house(_,_,kools,_,yellow),Houses),
+middleHouse(house(_,_,_,milk,_),Houses),
+firstHouse(house(norwegian,_,_,_,_),Houses),
+nextTo(house(_,_,chesterfields,_,_),house(_,fox,_,_,_),Houses),
+nextTo(house(_,_,kools,_,_),house(_,horse,_,_,_),Houses),
+exists(house(_,_,luckystike,orangejuice,_),Houses),
+exists(house(japanise,_,parliments,_,_),Houses),
+nextTo(house(norwegian,_,_,_,_),house(_,_,_,_,blue),Houses),
+exists(house(WaterDrinker,_,_,water,_),Houses),
+exists(house(ZebraOwner,zebra,_,_,_),Houses).
+

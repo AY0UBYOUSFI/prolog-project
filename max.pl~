@@ -1,0 +1,8 @@
+fact(0,1).
+fact(X,Result):-
+    X>=0,
+    X1 is X-1,
+    fact(X1,Result2),
+    Result is Result2 * X.
+
+
